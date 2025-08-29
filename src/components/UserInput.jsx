@@ -1,10 +1,11 @@
-export default function UserInput({changeValue, handleChange}) {
+export default function UserInput({ changeValue, handleChange }) {
   return (
-    <div id="user-input">
+    <section id="user-input">
       <div className="input-group">
         <p>
           <label htmlFor="init-investment">Initial Investment</label>
           <input
+            required
             type="number"
             id="init-investment"
             name="initialInvestment"
@@ -15,6 +16,7 @@ export default function UserInput({changeValue, handleChange}) {
         <p>
           <label htmlFor="annual-investment">Annual Investment</label>
           <input
+            required
             type="number"
             id="annual-investment"
             name="annualInvestment"
@@ -27,6 +29,7 @@ export default function UserInput({changeValue, handleChange}) {
         <p>
           <label htmlFor="expected-return">Expected Return</label>
           <input
+            required
             type="number"
             id="expected-return"
             name="expectedReturn"
@@ -37,6 +40,7 @@ export default function UserInput({changeValue, handleChange}) {
         <p>
           <label htmlFor="duration">Duration</label>
           <input
+            required
             type="number"
             id="duration"
             name="duration"
@@ -45,6 +49,6 @@ export default function UserInput({changeValue, handleChange}) {
           />
         </p>
       </div>
-    </div>
+    </section>
   );
 }

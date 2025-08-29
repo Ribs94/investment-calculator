@@ -6,28 +6,22 @@ import { useState } from "react";
 
 function App() {
   const [changeValue, setChangeValue] = useState({
-    initialInvestment: "",
-    annualInvestment: "",
-    expectedReturn: "",
-    duration: "",
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10,
   });
-
   const [results, setResults] = useState([]);
+
   const handleChange = (evt) => {
+    const value = Number(evt.target.value);
     const newState = {
       ...changeValue,
-      [evt.target.name]: evt.target.value,
+      [evt.target.name]: value,
     };
     setChangeValue(newState);
 
-    const numericValues = {
-      initialInvestment: Number(newState.initialInvestment),
-      annualInvestment: Number(newState.annualInvestment),
-      expectedReturn: Number(newState.expectedReturn),
-      duration: Number(newState.duration),
-    };
-
-    setResults(calculateInvestmentResults(numericValues));
+    setResults(calculateInvestmentResults(newState));
   };
 
   return (
