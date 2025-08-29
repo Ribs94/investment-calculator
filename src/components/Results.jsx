@@ -27,7 +27,7 @@ export default function Results({
           {data.map((yearData) => {
             totalInterest += yearData.interest;
 
-            const investedCapital = data[0].valueEndOfYear - yearData.interest;
+            const investedCapital = yearData.valueEndOfYear - totalInterest;
 
             return (
               <tr key={yearData.year}>
