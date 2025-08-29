@@ -11,6 +11,9 @@ function App() {
     expectedReturn: 6,
     duration: 10,
   });
+
+  const inputIsValid = changeValue.duration >= 1;
+
   const [currency, setCurrency] = useState("EUR");
 
   const handleToggleCurrency = () => {
@@ -18,10 +21,9 @@ function App() {
   };
 
   const handleChange = (evt) => {
-    const value = Number(evt.target.value);
     setChangeValue((prev) => ({
       ...prev,
-      [evt.target.name]: value,
+      [evt.target.name]: +evt.target.value,
     }));
   };
 
@@ -33,12 +35,17 @@ function App() {
       <Header />
       <main>
         <UserInput changeValue={changeValue} handleChange={handleChange} />
-        <Results
-          data={results}
-          formatter={formatter}
-          currency={currency}
-          onToggleCurrency={handleToggleCurrency}
-        />
+        {!inputIsValid && (
+          <p className="center">Please enter a duration greater than zero.</p>
+        )}
+        {inputIsValid && (
+          <Results
+            data={results}
+            formatter={formatter}
+            currency={currency}
+            onToggleCurrency={handleToggleCurrency}
+          />
+        )}
       </main>
     </>
   );
