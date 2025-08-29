@@ -64,9 +64,31 @@ body {
   font-size: 1rem;
 }
 
+#button {
+  display: flex;                 /* enable flex for the button content */
+  justify-content: center;       /* center content horizontally */
+  align-items: center;           /* center content vertically */
+  margin: 0 auto;             /* center the button itself horizontally with some top/bottom spacing */
+  font-family: 'Roboto Condensed', sans-serif;
+  background: linear-gradient(180deg, #307e6c, #2b996d);
+  border: none;                  /* remove default border */
+  border-radius: 0.8rem;
+  color: #e1eeeb;
+  padding: 15px 30px;            /* vertical 1rem, horizontal 2rem */
+  cursor: pointer;               /* nice pointer on hover */
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+#button:hover {
+  transform: scale(1.05);        /* slightly grow */
+  background: linear-gradient(180deg, #2b996d, #307e6c); /* subtle gradient flip */
+}
+
 #result {
   max-width: 50rem;
-  margin: 2rem auto;
+  margin: auto;
   padding: 1rem;
   table-layout: fixed;
   border-spacing: 1rem;

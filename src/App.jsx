@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import Results from "./components/Results";
-import { calculateInvestmentResults } from "./util/investment";
+import { getFormatter, calculateInvestmentResults } from "./util/investment";
 import { useState } from "react";
 
 function App() {
@@ -11,18 +11,22 @@ function App() {
     expectedReturn: 6,
     duration: 10,
   });
-  const [results, setResults] = useState([]);
+  const [currency, setCurrency] = useState("EUR");
+
+  const handleToggleCurrency = () => {
+    setCurrency((prev) => (prev === "EUR" ? "USD" : "EUR"));
+  };
 
   const handleChange = (evt) => {
     const value = Number(evt.target.value);
-    const newState = {
-      ...changeValue,
+    setChangeValue((prev) => ({
+      ...prev,
       [evt.target.name]: value,
-    };
-    setChangeValue(newState);
-
-    setResults(calculateInvestmentResults(newState));
+    }));
   };
+
+  const results = calculateInvestmentResults(changeValue);
+  const formatter = getFormatter(currency);
 
   return (
     <>
@@ -31,8 +35,9 @@ function App() {
         <UserInput changeValue={changeValue} handleChange={handleChange} />
         <Results
           data={results}
-          initialInvestment={changeValue.initialInvestment}
-          annualInvestment={changeValue.annualInvestment}
+          formatter={formatter}
+          currency={currency}
+          onToggleCurrency={handleToggleCurrency}
         />
       </main>
     </>
