@@ -37,8 +37,8 @@ function App() {
         <UserInput changeValue={changeValue} handleChange={handleChange} />
         <Results
           data={results}
-          initialInvestment={Number(changeValue.initialInvestment)}
-          annualInvestment={Number(changeValue.annualInvestment)}
+          initialInvestment={changeValue.initialInvestment}
+          annualInvestment={changeValue.annualInvestment}
         />
       </main>
     </>
